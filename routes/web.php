@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MangaController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [MangaController :: class, 'mangaPage']);
