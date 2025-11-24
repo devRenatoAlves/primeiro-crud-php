@@ -3,4 +3,4 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MangaController;
 
-Route::get('/', [MangaController :: class, 'mangaPAge']);
+Route::get('/', [MangaController :: class, 'mangaPage']);

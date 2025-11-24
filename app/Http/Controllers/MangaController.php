@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 
 class MangaController extends Controller
 {   
-    public function mangaCreate () {
+    public function mangaStore () {
         return ;
     }
 
-    public function mangaRead () {
+    public function mangaIndex () {
         return ;
     }
 
@@ -18,7 +18,7 @@ class MangaController extends Controller
         return ;
     }
 
-    public function mangaDelete () {
+    public function mangaDestroy () {
         return ;
     }
 
