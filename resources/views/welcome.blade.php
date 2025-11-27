@@ -11,16 +11,13 @@
         body {
             background-color: #121212 !important; 
         }
-        .card-form {
-            background-color: #212529;
-            border: 1px solid #343a40;
-            border-radius: 0.75rem;
-            padding: 2rem;
-        }
+        /* Estilo dos Inputs para combinar com o dark mode */
         .form-control, .form-select {
-            background-color: #343a40;
+            background-color: #343a40; 
             color: #ffffff;
             border: 1px solid #495057;
+            /* Garante que o select e input tenham a mesma altura */
+            height: calc(2.25rem + 2px); 
         }
         .form-control:focus, .form-select:focus {
             background-color: #343a40;
@@ -41,43 +38,57 @@
           </div>
       </nav>
 
-      <div class="container mt-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-5 col-md-8"> 
-                    <div class="card-form shadow-lg">
-                        <h3 class="text-white text-center mb-4 border-bottom pb-2">Cadastro de Volume</h3>
+      <div class="container mt-4">
+            <!-- Título do Formulário -->
+            <h4 class="text-white mb-3 border-bottom pb-2">Adicionar Novo Volume:</h4>
 
-                        <form>
-                            <div class="mb-3">
-                                <label for="manga_name" class="form-label text-white">Nome do Mangá:</label>
-                                <input type="text" class="form-control" id="manga_name" placeholder="Dragon Ball">
-                            </div>  
+            <!-- FORMULÁRIO HORIZONTAL -->
+            <form class="row g-3 align-items-end mb-5 p-3 rounded" style="background-color: #212529; border: 1px solid #343a40;">
 
-                            <div class="mb-3">
-                                <label for="qtd_pg" class="form-label text-white">Quantidade de Páginas:</label>
-                                <input type="number" class="form-control" id="qtd_pg" placeholder="145">
-                            </div>
-                            
-                            <div class="mb-4">
-                                <label for="inputState" class="form-label text-white">Status</label>
-                                <select id="inputState" class="form-select">
-                                    <option selected>Escolha...</option>
-                                    <option>Lendo</option>
-                                    <option>Dropei</option>
-                                    <option>Finalizado</option>
-                                    <option>Planejo Ler</option>
-                                </select> 
-                            </div>
+                <!-- 1. Nome do Mangá -->
+                <div class="col-md-5">
+                    <label for="manga_name" class="form-label text-white">Nome do Mangá:</label>
+                    <input type="text" class="form-control" id="manga_name" placeholder="Dragon Ball">
+                </div>  
 
-                            <div class="d-grid">
-                                <button type="button" class="btn btn-success btn-lg">
-                                    <i class="fas fa-save me-2"></i> Inserir
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                <!-- 2. Quantidade de Páginas -->
+                <div class="col-md-2">
+                    <label for="qtd_pg" class="form-label text-white">Páginas:</label>
+                    <input type="number" class="form-control" id="qtd_pg" placeholder="145">
+                </div>
+                
+                <!-- 3. Status -->
+                <div class="col-md-3">
+                    <label for="inputState" class="form-label text-white">Status</label>
+                    <select id="inputState" class="form-select">
+                        <option selected>Escolha...</option>
+                        <option>Lendo</option>
+                        <option>Dropei</option>
+                        <option>Finalizado</option>
+                        <option>Planejo Ler</option>
+                    </select> 
+                </div>
+
+                <!-- Botão -->
+                <div class="col-md-2 d-grid">
+                    <button type="button" class="btn btn-success btn-block">
+                        <i class="fas fa-plus-circle me-1"></i> Inserir
+                    </button>
+                </div>
+            </form>
+            
+            <!-- ÁREA PARA LISTAGEM DE MANGÁS -->
+            <div class="mt-5">
+                <h2 class="text-white border-bottom pb-2 mb-4">Sua Coleção</h2>
+                
+                <!-- Placeholder para a Tabela/Cards da lista -->
+                <div class="p-5 text-center text-muted rounded" style="background-color: #212529; border: 1px dashed #495057;">
+                    <i class="fas fa-list-alt fa-3x mb-3" style="color: #495057;"></i>
+                    <p class="mb-0">Este é o espaço reservado para a listagem dos seus mangás.</p>
+                    <p class="mb-0">Aqui você irá construir a tabela ou os cards de exibição.</p>
                 </div>
             </div>
+
       </div> 
   
 
