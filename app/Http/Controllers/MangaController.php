@@ -8,14 +8,14 @@ class MangaController extends Controller
 {   
     public function mangaStore (Request $request) { //cria as info no db
         $request -> validate([
-            'manga_name' => 'require|max:255',
-            'qtd_pg' => 'require|integer|min:1',
-            'status' => 'require',
+            'manga_name' => 'required|max:255',
+            'qtd_pg' => 'required|integer|min:1',
+            'status' => 'required',
         ]);
 
         Manga::create([
             'manga_name' => $request->manga_name,
-            'qtd_pg' => $request->qtd_page,
+            'qtd_pg' => $request->qtd_pg,
             'status' => $request->status,
         ]);
 

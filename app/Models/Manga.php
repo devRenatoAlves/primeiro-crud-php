@@ -12,7 +12,7 @@ class Manga extends Model
      
     protected $fillable = [
         'manga_name',
-        'qtd_pag',
+        'qtd_pg',
         'status'    
     ];
 }
