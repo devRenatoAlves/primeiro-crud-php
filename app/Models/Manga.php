@@ -7,9 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Manga extends Model
 {
+    protected $table = 'manga';
 
-     use HasFactory;
-     
     protected $fillable = [
         'manga_name',
         'qtd_pg',
