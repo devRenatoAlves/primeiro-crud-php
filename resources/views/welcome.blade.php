@@ -43,7 +43,7 @@
             <h4 class="text-white mb-3 border-bottom pb-2">Adicionar Novo Volume:</h4>
 
             <!-- FORMULÁRIO HORIZONTAL -->
-            <form method="POST" action="{{ route('mangaStore') }}" class="row g-3 align-items-end mb-5 p-3 rounded" style="background-color: #212529; border: 1px solid #343a40;">
+            <form method="POST" action="{{ route('manga.store') }}" class="row g-3 align-items-end mb-5 p-3 rounded" style="background-color: #212529; border: 1px solid #343a40;">
                 @csrf
                 <!-- 1. Nome do Mangá -->
                 <div class="col-md-5">

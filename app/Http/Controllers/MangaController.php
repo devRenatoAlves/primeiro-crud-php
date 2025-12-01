@@ -19,7 +19,7 @@ class MangaController extends Controller
             'status' => $request->status,
         ]);
 
-        return redirect()->route('manga.index')->with('success', 'Mangá inserido com sucesso!');
+        return ;
     }
 
     public function mangaIndex () { // le as info no db
