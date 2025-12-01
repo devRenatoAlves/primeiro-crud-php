@@ -43,24 +43,24 @@
             <h4 class="text-white mb-3 border-bottom pb-2">Adicionar Novo Volume:</h4>
 
             <!-- FORMULÁRIO HORIZONTAL -->
-            <form class="row g-3 align-items-end mb-5 p-3 rounded" style="background-color: #212529; border: 1px solid #343a40;">
-
+            <form method="POST" action="{{ route('mangaStore') }}" class="row g-3 align-items-end mb-5 p-3 rounded" style="background-color: #212529; border: 1px solid #343a40;">
+                @csrf
                 <!-- 1. Nome do Mangá -->
                 <div class="col-md-5">
                     <label for="manga_name" class="form-label text-white">Nome do Mangá:</label>
-                    <input type="text" class="form-control" id="manga_name" placeholder="Dragon Ball">
+                    <input type="text" class="form-control" id="manga_name" name="manga_name" placeholder="Dragon Ball">
                 </div>  
 
                 <!-- 2. Quantidade de Páginas -->
                 <div class="col-md-2">
                     <label for="qtd_pg" class="form-label text-white">Páginas:</label>
-                    <input type="number" class="form-control" id="qtd_pg" placeholder="145">
+                    <input type="number" class="form-control" id="qtd_pg" name="qtd_pg" placeholder="145">
                 </div>
                 
                 <!-- 3. Status -->
                 <div class="col-md-3">
-                    <label for="inputState" class="form-label text-white">Status</label>
-                    <select id="inputState" class="form-select">
+                    <label for="status" class="form-label text-white">Status</label>
+                    <select id="status" name="status" class="form-select">
                         <option selected>Escolha...</option>
                         <option>Lendo</option>
                         <option>Dropei</option>
@@ -71,7 +71,7 @@
 
                 <!-- Botão -->
                 <div class="col-md-2 d-grid">
-                    <button type="button" class="btn btn-success btn-block">
+                    <button type="submit" class="btn btn-success btn-block">
                         <i class="fas fa-plus-circle me-1"></i> Inserir
                     </button>
                 </div>
