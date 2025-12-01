@@ -12,7 +12,8 @@ return new class extends Migration
         Schema::create('manga', function (Blueprint $table) {
             $table->id()->cascadeOnDelete();
             $table->string('manga_name', 50)->unique();
-            $table->integer('qtd_pg');
+            $table->integer('volumes');
+            $table->integer('lidos')->default(0);
             $table->enum('status', ['Lendo','Dropei','Finalizado','Planejo Ler']);
             $table->timestamps();
         });

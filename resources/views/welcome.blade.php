@@ -53,8 +53,8 @@
 
                 <!-- 2. Quantidade de Páginas -->
                 <div class="col-md-2">
-                    <label for="qtd_pg" class="form-label text-white">Páginas:</label>
-                    <input type="number" class="form-control" id="qtd_pg" name="qtd_pg" placeholder="145">
+                    <label for="volumes" class="form-label text-white">Volumes:</label>
+                    <input type="number" class="form-control" id="volumes" name="volumes" placeholder="145">
                 </div>
                 
                 <!-- 3. Status -->
