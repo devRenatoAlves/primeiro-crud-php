@@ -6,7 +6,7 @@ use App\Models\Manga;
 
 class MangaController extends Controller
 {   
-    public function mangaStore (Request $request) { //cria as info no db
+    public function store (Request $request) { //cria as info no db
         $request -> validate([
             'manga_name' => 'required|max:255',
             'volumes' => 'required|integer|min:1',
@@ -22,20 +22,21 @@ class MangaController extends Controller
         return redirect()->route('manga.index')->with('success', 'Mangá inserido com sucesso!');
     }
 
-    public function mangaIndex () { // le as info no db
-        return ;
+    public function index () { // le as info no db
+        $manga = Manga::all();
+        return view('welcome', compact('manga'));
     }
 
-    public function mangaUpdate () { // atualiza as info no db
-        return ;
+    public function update () { // atualiza as info no db
+        return;
     }
 
-    public function mangaDestroy () { // exclui as info no db
-        return ;
+    public function destroy ($id) { // exclui as info no db
+
+        $manga = Manga::findOrFail($id);
+        $manga->delete();
+
+        return redirect()->route('manga.index')->with('success','Mangá excluido com sucesso!');
     }
 
-    public function mangaPage () 
-    {
-        return view('welcome');
-    }
 }

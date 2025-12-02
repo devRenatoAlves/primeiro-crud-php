@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MangaController;
 
+// Landing Page
+// redireciona a raiz para a listagem gerada por Route::resource
+Route::redirect('/', '/manga');
 
-Route::get('/', [MangaController :: class, 'mangaPage'])->name('manga.index');
-
-Route::post('/mangastore', [MangaController :: class, 'mangaStore'])->name('manga.store');
-
+Route::resource('manga',MangaController::class);
