@@ -16,7 +16,6 @@
             background-color: #343a40; 
             color: #ffffff;
             border: 1px solid #495057;
-            /* Garante que o select e input tenham a mesma altura */
             height: calc(2.25rem + 2px); 
         }
         .form-control:focus, .form-select:focus {
@@ -25,7 +24,6 @@
             border-color: #0d6efd;
             box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
         }
-        /* Estilo para a barra de progresso */
         .progress-bar {
             background-color: #0d6efd;
         }
@@ -103,7 +101,6 @@
                     <table class="table table-dark table-striped table-hover rounded-3 overflow-hidden">
                         <thead>
                             <tr>
-                                <!-- ORDEM SOLICITADA: ID, Nome, Volumes (lidos/total), Status, Ações -->
                                 <th scope="col">ID</th>
                                 <th scope="col">Nome</th>
                                 <th scope="col" class="text-center">Volumes</th>
@@ -114,17 +111,14 @@
                         <tbody>
                             @foreach($manga as $manga)
                             <tr>
-                                <!-- ID -->
+            
                                 <th scope="row">{{ $manga->id }}</th>
 
-                                <!-- NOME -->
                                 <td>{{ $manga->manga_name }}</td>
 
-                                <!-- VOLUMES (LIDOS/TOTAL) + BARRA DE PROGRESSO -->
                                 <td class="text-center">
                                     {{ $manga->lidos }} / {{ $manga->volumes }}
                                     @php
-                                        // Calcula a porcentagem, evitando divisão por zero
                                         $progresso = $manga->volumes > 0 ? ($manga->lidos / $manga->volumes) * 100 : 0;
                                         $progresso = min(100, $progresso);
                                     @endphp
@@ -133,9 +127,7 @@
                                     </div>
                                 </td>
 
-                                <!-- STATUS -->
                                 <td>
-                                    <!-- Estilo para destacar o status com badges -->
                                     <span class="badge {{ 
                                         $manga->status == 'Finalizado' ? 'bg-success' : (
                                         $manga->status == 'Lendo' ? 'bg-primary' : (
@@ -145,14 +137,12 @@
                                     </span>
                                 </td>
 
-                                <!-- AÇÕES (Botões Editar e Excluir) -->
                                 <td class="text-center">
                                     <!-- BOTÃO EDITAR -->
-                                    <a class="btn btn-sm btn-info text-white me-2" title="Editar">
+                                    <a href="{{ route('manga.edit', $manga->id) }}" class="btn btn-sm btn-info text-white me-2" title="Editar">
                                         <i class="fas fa-edit"></i>
                                     </a>
 
-                                    <!-- BOTÃO EXCLUIR (usando formulário DELETE) -->
                                     <form method="POST" action= "{{ route('manga.destroy', $manga->id) }}"  style="display:inline-block;">
                                         @csrf
                                         @method('DELETE')

@@ -27,8 +27,26 @@ class MangaController extends Controller
         return view('welcome', compact('manga'));
     }
 
-    public function update () { // atualiza as info no db
-        return;
+
+    public function edit($id)
+    {
+        $manga = Manga::findOrFail($id);
+        return view('edit', compact('manga'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'manga_name' => 'required|max:255',
+            'volumes' => 'required|integer|min:1',
+            'lidos' => 'nullable|integer|min:0',
+            'status' => 'required',
+        ]);
+
+        $manga = Manga::findOrFail($id);
+        $manga->update($request->only(['manga_name', 'volumes', 'lidos', 'status']));
+
+        return redirect()->route('manga.index')->with('success', 'Mangá atualizado com sucesso!');
     }
 
     public function destroy ($id) { // exclui as info no db
