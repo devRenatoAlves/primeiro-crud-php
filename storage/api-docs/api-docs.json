@@ -1,0 +1,278 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API de Gerenciamento de Mangás",
+        "description": "Documentação da API CRUD para gerenciar sua coleção de mangás.",
+        "contact": {
+            "email": "seu-email@exemplo.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://my-default-host.com",
+            "description": "Servidor principal da API"
+        }
+    ],
+    "paths": {
+        "/manga": {
+            "get": {
+                "tags": [
+                    "Mangás"
+                ],
+                "summary": "Lista todos os mangás",
+                "description": "Retorna todos os mangás da coleção.",
+                "operationId": "getMangasList",
+                "responses": {
+                    "200": {
+                        "description": "Lista de mangás retornada com sucesso (Retorna View/HTML na web, mas representa a lista na API)",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Manga"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Mangás"
+                ],
+                "summary": "Cria um novo mangá",
+                "description": "Registra um novo mangá na coleção.",
+                "operationId": "storeManga",
+                "requestBody": {
+                    "description": "Dados do mangá a ser criado",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "manga_name",
+                                    "volumes",
+                                    "status"
+                                ],
+                                "properties": {
+                                    "manga_name": {
+                                        "type": "string",
+                                        "example": "Shingeki no Kyojin"
+                                    },
+                                    "volumes": {
+                                        "type": "integer",
+                                        "example": 34
+                                    },
+                                    "status": {
+                                        "type": "string",
+                                        "example": "Planejo Ler"
+                                    },
+                                    "lidos": {
+                                        "type": "integer",
+                                        "example": 0
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "302": {
+                        "description": "Redirecionamento após criação bem-sucedida (Retorna HTML na web, mas representa a criação na API)"
+                    },
+                    "422": {
+                        "description": "Erro de Validação"
+                    }
+                }
+            }
+        },
+        "/manga/{id}/edit": {
+            "get": {
+                "tags": [
+                    "Mangás"
+                ],
+                "summary": "Exibe o formulário de edição (Web)",
+                "description": "Retorna a view de edição para um mangá específico. Note que esta rota é focada em Web.",
+                "operationId": "editManga",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do mangá a ser editado",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "View de edição retornada com sucesso."
+                    },
+                    "404": {
+                        "description": "Mangá não encontrado."
+                    }
+                }
+            }
+        },
+        "/manga/{id}": {
+            "put": {
+                "tags": [
+                    "Mangás"
+                ],
+                "summary": "Atualiza um mangá existente",
+                "description": "Atualiza os dados de um mangá específico pelo ID. O método é PUT/PATCH e redireciona (302).",
+                "operationId": "updateManga",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do mangá a ser atualizado",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Dados do mangá a serem atualizados",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "manga_name": {
+                                        "type": "string",
+                                        "example": "Jujutsu Kaisen"
+                                    },
+                                    "volumes": {
+                                        "type": "integer",
+                                        "example": 25
+                                    },
+                                    "lidos": {
+                                        "type": "integer",
+                                        "example": 25
+                                    },
+                                    "status": {
+                                        "type": "string",
+                                        "example": "Finalizado"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "302": {
+                        "description": "Redirecionamento após atualização bem-sucedida"
+                    },
+                    "404": {
+                        "description": "Mangá não encontrado."
+                    },
+                    "422": {
+                        "description": "Erro de Validação"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Mangás"
+                ],
+                "summary": "Deleta um mangá",
+                "description": "Remove um mangá da coleção pelo ID.",
+                "operationId": "deleteManga",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do mangá a ser excluído",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "302": {
+                        "description": "Redirecionamento após exclusão bem-sucedida"
+                    },
+                    "404": {
+                        "description": "Mangá não encontrado."
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Manga": {
+                "title": "Mangá",
+                "description": "Estrutura de dados de um item na coleção de mangás.",
+                "required": [
+                    "manga_name",
+                    "volumes",
+                    "status"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "ID único do mangá (gerado automaticamente).",
+                        "type": "integer",
+                        "format": "int64",
+                        "readOnly": true
+                    },
+                    "manga_name": {
+                        "description": "Nome do mangá.",
+                        "type": "string",
+                        "example": "One Piece"
+                    },
+                    "volumes": {
+                        "description": "Número total de volumes publicados.",
+                        "type": "integer",
+                        "example": 100
+                    },
+                    "lidos": {
+                        "description": "Número de volumes lidos pelo usuário.",
+                        "type": "integer",
+                        "default": 0,
+                        "example": 50
+                    },
+                    "status": {
+                        "description": "Status atual de leitura.",
+                        "type": "string",
+                        "enum": [
+                            "Lendo",
+                            "Dropei",
+                            "Finalizado",
+                            "Planejo Ler"
+                        ],
+                        "example": "Lendo"
+                    },
+                    "created_at": {
+                        "description": "Data de criação do registro.",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": true
+                    },
+                    "updated_at": {
+                        "description": "Data da última atualização do registro.",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": true
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Mangás",
+            "description": "Mangás"
+        }
+    ]
+}
