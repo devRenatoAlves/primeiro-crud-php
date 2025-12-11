@@ -1,4 +1,4 @@
-# Gerenciador de Mangás - CRUD com Laravel 10
+# Gerenciador de Mangás - CRUD com Laravel
 
 Este projeto é uma aplicação web completa para o gerenciamento de coleções de mangás, desenvolvida como parte de um estudo aprofundado sobre o framework **Laravel**. O sistema implementa o padrão de arquitetura **MVC** (Model-View-Controller) e oferece uma interface moderna e responsiva para realizar todas as operações de **CRUD** (Criar, Ler, Atualizar e Deletar).
 
@@ -6,7 +6,7 @@ Além da interface web, o projeto conta com uma API RESTful totalmente documenta
 
 ## Demonstração
 
-Confira o projeto em funcionamento e acompanhe o desenvolvimento passo a passo no YouTube:
+Confira o projeto em funcionamento no YouTube:
 
 [![Demonstração do Projeto no YouTube](https://img.youtube.com/vi/CtdyNPKYCNg/0.jpg)](https://www.youtube.com/watch?v=CtdyNPKYCNg)
 
